@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Game Developer Portfolio</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
+
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(to bottom, #0f0f0f, #1a1a1a);
+      color: #f5f5f5;
+    }
+
+    header {
+      background-color: #111;
+      padding: 2rem;
+      text-align: center;
+      border-bottom: 2px solid #444;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: #00ff99;
+      margin: 0;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #ccc;
+    }
+
+    nav {
+      text-align: center;
+      margin: 1.5rem 0;
+    }
+
+    nav a {
+      color: #00ffcc;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: bold;
+      border-bottom: 2px solid transparent;
+      transition: border 0.3s;
+    }
+
+    nav a:hover {
+      border-bottom: 2px solid #00ffcc;
+    }
+
+    section {
+      max-width: 900px;
+      margin: auto;
+      padding: 2rem;
+    }
+
+    .project {
+      background-color: #222;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      border-left: 5px solid #00ff99;
+      transition: transform 0.2s ease;
+    }
+
+    .project:hover {
+      transform: scale(1.02);
+    }
+
+    .project h3 {
+      margin-top: 0;
+      color: #00ff99;
+    }
+
+    .project p {
+      color: #bbb;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background-color: #111;
+      color: #888;
+      font-size: 0.9rem;
+      border-top: 1px solid #333;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #00ff99;
+      color: #000;
+      padding: 0.5rem 1.5rem;
+      text-decoration: none;
+      margin-top: 1rem;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .btn:hover {
+      background: #00cc77;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Your Name</h1>
+    <p>Game Developer | Unity | Unreal | C# | C++</p>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      I’m a passionate game developer who loves creating immersive worlds and interactive experiences. 
+      Whether it's a haunting horror title, a fast-paced action game, or a puzzle adventure, I aim to 
+      bring stories to life using cutting-edge game engines and creative design.
+    </p>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+
+    <div class="project">
+      <h3>🎮 Haunted Hideout</h3>
+      <p>
+        A first-person horror survival game where players must escape a haunted mansion using clues, 
+        stealth, and quick thinking. Built in Unity using C#.
+      </p>
+      <a class="btn" href="#" target="_blank">View Game</a>
+    </div>
+
+    <div class="project">
+      <h3>🧩 Puzzle Pursuit</h3>
+      <p>
+        A modern escape room game inspired by classic puzzle hunts. Features real-time interactions, 
+        complex logic puzzles, and an evolving narrative. Built using Unity URP and custom shaders.
+      </p>
+      <a class="btn" href="#" target="_blank">View Game</a>
+    </div>
+
+  </section>
+
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <p>📧 your.email@example.com</p>
+    <p>🌐 <a href="https://github.com/yourusername" target="_blank" style="color:#00ffcc;">GitHub Profile</a></p>
+  </section>
+
+  <footer>
+    © 2025 Your Name. All rights reserved.
+  </footer>
+
+</body>
+</html>
