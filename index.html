@@ -401,12 +401,12 @@ body * {
       }
     });
 
-    function animateSplitText(selector) {
+function animateSplitText(selector) {
   const el = document.querySelector(selector);
   if (!el) return;
   const text = el.textContent.trim();
   el.innerHTML = '';
-  text.split('').forEach((char, i) => {
+  Array.from(text).forEach((char, i) => {
     const span = document.createElement('span');
     span.textContent = char === ' ' ? '\u00A0' : char;
     span.style.animationDelay = `${i * 0.02}s`;
@@ -444,5 +444,9 @@ body * {
     requestAnimationFrame(animate);
   }
   animate();
+    window.addEventListener('load', () => {
+    animateSplitText('header h1');
+    animateSplitText('.tagline');
+  });
 
   </script>
