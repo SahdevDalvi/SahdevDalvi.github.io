@@ -8,25 +8,14 @@
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Press+Start+2P&display=swap');
 
     html {
-  scroll-behavior: smooth;
+      scroll-behavior: smooth;
     }
-
-    .profile-pic {
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid #00ffcc;
-  margin-bottom: 1rem;
-  box-shadow: 0 0 15px #00ffcc33;
-}
 
     body {
       margin: 0;
       font-family: 'Orbitron', sans-serif;
       background: linear-gradient(to bottom, #0d0d0d, #1a1a1a);
       color: #f2f2f2;
-
     }
 
     header {
@@ -58,25 +47,23 @@
       text-align: center;
       margin: 1.5rem 0;
     }
-nav a {
-  color: #00ff99;
-  margin: 0 1rem;
-  text-decoration: none;
-  font-weight: bold;
-  border-bottom: 2px solid transparent;
-  transition: border 0.3s, transform 0.3s ease, color 0.3s ease; /* add transform and color */
-}
 
-nav a:hover,
-nav a:focus {
-  border-bottom: 2px solid #00ff99;
-  transform: scale(1.2);   /* smooth scale up */
-  color: #f0a500;          /* highlight color */
-  outline: none;           /* remove default outline */
-}
+    nav a {
+      color: #00ff99;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: bold;
+      border-bottom: 2px solid transparent;
+      transition: border 0.3s, transform 0.3s ease, color 0.3s ease;
+    }
 
-/* Add this at the very top of your CSS to enable smooth scrolling for the whole page */
-
+    nav a:hover,
+    nav a:focus {
+      border-bottom: 2px solid #00ff99;
+      transform: scale(1.2);
+      color: #f0a500;
+      outline: none;
+    }
 
     section {
       max-width: 1000px;
@@ -134,12 +121,6 @@ nav a:focus {
       background: #00cc77;
     }
 
-    .tagline {
-      font-style: italic;
-      font-size: 1rem;
-      color: #888;
-    }
-
     .social {
       text-align: center;
       margin-top: 1rem;
@@ -164,9 +145,6 @@ nav a:focus {
       border-top: 1px solid #333;
     }
 
-   
-
-    /* WASD hint - visible only on desktop */
     .nav-instruction {
       text-align: center;
       color: #00ffcc;
@@ -176,20 +154,115 @@ nav a:focus {
       user-select: none;
     }
 
-    /* Hide WASD hint on small screens */
     @media (max-width: 600px) {
       .nav-instruction {
         display: none;
       }
     }
+
+.profile-card {
+  max-width: 340px;
+  background: linear-gradient(145deg, #111, #1e1e1e);
+  margin: auto;
+  padding: 2rem 1.5rem;
+  border-radius: 22px;
+  box-shadow: 0 0 25px #00ffcc55;
+  text-align: center;
+  border: 2px solid #00ffcc33;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.profile-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 0 40px #00ffccaa;
+}
+
+.card-image {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #00ffcc;
+  box-shadow: 0 0 12px #00ffcc44;
+  margin-bottom: 1rem;
+  transition: transform 0.4s ease;
+}
+
+.profile-card:hover .card-image {
+  transform: rotate(-2deg) scale(1.05);
+}
+
+.card-name {
+  color: #00ffcc;
+  font-size: 1.6rem;
+  margin: 0.5rem 0;
+  font-family: 'Press Start 2P', monospace;
+  letter-spacing: 1px;
+}
+
+.card-tagline {
+  color: #bbb;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-top: 0.3rem;
+  font-style: italic;
+}
+
+.card-socials {
+  margin-top: 1.2rem;
+}
+
+.card-socials a {
+  display: inline-block;
+  margin: 0 0.6rem;
+  color: #00ccff;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.card-socials a:hover {
+  color: #f0a500;
+  transform: scale(1.2);
+}
+
+    .split-text span {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    #pixel-trail-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+body * {
+  position: relative;
+  z-index: 1;
+}
+
   </style>
 </head>
 <body>
-
+  <canvas id="pixel-trail-canvas"></canvas>
 
   <header>
     <h1>Sahdev Dalvi</h1>
-    <p class="tagline">🚀 Turning Concepts into Code | Horror & Puzzle Enthusiast </p>
+    <p class="tagline">🚀 Turning Concepts into Code | Horror & Puzzle Enthusiast</p>
   </header>
 
   <nav>
@@ -197,75 +270,63 @@ nav a:focus {
     <a href="#prototypes">Prototypes</a>
     <a href="#projects">Projects</a>
     <a href="#contact">Contact</a>
-   <a href="https://sahdevdalvi.github.io/Resume.png" target="_blank">Portfolio</a>
+    <a href="https://sahdevdalvi.github.io/Resume.png" target="_blank">Portfolio</a>
   </nav>
 
   <div class="nav-instruction">Use WASD or Arrow keys to navigate</div>
 
   <section id="about">
-    <h2>👾 About Me</h2>
-    <div style="text-align: center;">
-    <img src="1000171007.jpg" alt="Sahdev Dalvi" class="profile-pic" />
-  </div>
-    <p>
-      Hi! I’m <strong>Sahdev Dalvi</strong>, a dedicated game developer with a strong passion for creating engaging and atmospheric gameplay. 
-      While I work across various genres, I’m especially drawn to psychological horror for its ability to distort perception and heighten tension. 
-      From building stealth AI to prototyping unique mechanics, I specialize in crafting gameplay woven from the threads of imagination.  
-    </p>
+    <div class="profile-card">
+      <img src="1000171007.jpg" alt="Sahdev Dalvi" class="card-image" />
+      <h2 class="card-name">Sahdev Dalvi</h2>
+      <p class="card-tagline">🚀 Turning Concepts into Code<br>Horror & Puzzle Enthusiast</p>
+      <div class="card-socials">
+        <a href="https://github.com/SahdevDalvi" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/sahdev-dalvi-947088325" target="_blank">LinkedIn</a>
+      </div>
+    </div>
   </section>
 
-<section id="prototypes">
-  <h2>🧪 Prototypes</h2>
+  <section id="prototypes">
+    <h2>🧪 Prototypes</h2>
 
-  <div class="prototype">
-    <h3>🧟‍♂️ Weeping AI</h3>
-    <p>
-      A terrifying AI prototype inspired by the "Weeping Angel" mechanic — the monster moves only when you’re not looking! Built in Unity using raycasting and field of view detection.
-    </p>
-    <a class="btn" href="https://github.com/SahdevDalvi/Weeping-Angel" target="_blank">View on GitHub</a>
-  </div>
+    <div class="prototype">
+      <h3>🧟‍♂️ Weeping AI</h3>
+      <p>A terrifying AI prototype inspired by the "Weeping Angel" mechanic — the monster moves only when you’re not looking! Built in Unity using raycasting and field of view detection.</p>
+      <a class="btn" href="https://github.com/SahdevDalvi/Weeping-Angel" target="_blank">View on GitHub</a>
+    </div>
 
-  <div class="prototype">
-    <h3>🏃 FPS Controller</h3>
-    <p>
-      A fully featured FPS controller with crouching, sprint stamina, and mouse-look. A great foundation for any first-person horror or survival game.
-    </p>
-    <a class="btn" href="https://github.com/SahdevDalvi/FPScontroller-Unity" target="_blank">View on GitHub</a>
-  </div>
+    <div class="prototype">
+      <h3>🏃 FPS Controller</h3>
+      <p>A fully featured FPS controller with crouching, sprint stamina, and mouse-look. A great foundation for any first-person horror or survival game.</p>
+      <a class="btn" href="https://github.com/SahdevDalvi/FPScontroller-Unity" target="_blank">View on GitHub</a>
+    </div>
 
-  <div class="prototype">
-    <h3>👁️‍🗨️ Colorblind Support </h3>
-    <p>
-     This Unity prototype demonstrates how to simulate different types of color vision using LUT (Lookup Texture)-based post-processing, helping developers design more accessible games.
-    </p>
-    <a class="btn" href="https://github.com/SahdevDalvi/Colorblind_Unity" target="_blank">View on GitHub</a>
-  </div>
+    <div class="prototype">
+      <h3>👁️‍🗨️ Colorblind Support</h3>
+      <p>This Unity prototype demonstrates how to simulate different types of color vision using LUT (Lookup Texture)-based post-processing, helping developers design more accessible games.</p>
+      <a class="btn" href="https://github.com/SahdevDalvi/Colorblind_Unity" target="_blank">View on GitHub</a>
+    </div>
 
-  <!-- New button for more prototypes -->
-  <div style="text-align: center; margin-top: 2rem;">
-    <a class="btn" href="https://github.com/SahdevDalvi?tab=repositories" target="_blank">
-      See More Prototypes on GitHub
-    </a>
-  </div>
-</section>
-
+    <div style="text-align: center; margin-top: 2rem;">
+      <a class="btn" href="https://github.com/SahdevDalvi?tab=repositories" target="_blank">
+        See More Prototypes on GitHub
+      </a>
+    </div>
+  </section>
 
   <section id="projects">
     <h2>🎯 Projects</h2>
 
     <div class="project">
       <h3>👻 Haunted Hideout</h3>
-      <p>
-        A survival horror game set in a haunted asylum. Includes stealth mechanics, puzzles, and a terrifying AI monster that hears your every sound.
-      </p>
+      <p>A survival horror game set in a haunted asylum. Includes stealth mechanics, puzzles, and a terrifying AI monster that hears your every sound.</p>
       <a class="btn" href="https://github.com/SahdevDalvi" target="_blank">Coming Soon</a>
     </div>
 
     <div class="project">
-      <h3> 🧩 Fragmented </h3>
-      <p>
-       Experience immersive environmental interactions and anomaly detection gameplay that builds tension through limited mobility and atmospheric storytelling.
-      </p>
+      <h3>🧩 Fragmented</h3>
+      <p>Experience immersive environmental interactions and anomaly detection gameplay that builds tension through limited mobility and atmospheric storytelling.</p>
       <a class="btn" href="https://github.com/SahdevDalvi" target="_blank">Coming Soon</a>
     </div>
   </section>
@@ -275,8 +336,8 @@ nav a:focus {
     <p>Email: dalvisahdev24@gmail.com</p>
     <p>Phone: +91 9820364526</p>
     <div class="social">
-      <a href="https://github.com/SahdevDalvi" target="_blank" rel="noopener noreferrer">GitHub</a> |
-     <a href="https://www.linkedin.com/in/sahdev-dalvi-947088325" target="_blank">LinkedIn</a>
+      <a href="https://github.com/SahdevDalvi" target="_blank">GitHub</a> |
+      <a href="https://www.linkedin.com/in/sahdev-dalvi-947088325" target="_blank">LinkedIn</a>
     </div>
   </section>
 
@@ -285,68 +346,103 @@ nav a:focus {
   </footer>
 
   <script>
-  // Section fade-in on scroll
-  function revealSections() {
-    document.querySelectorAll('section').forEach(section => {
-      const rect = section.getBoundingClientRect();
-      if (rect.top < window.innerHeight * 0.85) {
-        section.classList.add('visible');
-      }
-    });
-  }
-  window.addEventListener('scroll', revealSections);
-  window.addEventListener('load', revealSections);
+    function revealSections() {
+      document.querySelectorAll('section').forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.85) {
+          section.classList.add('visible');
+        }
+      });
+    }
+    window.addEventListener('scroll', revealSections);
+    window.addEventListener('load', revealSections);
 
-  // Keyboard navigation: scroll sections with W, A, S, D and arrow keys
-  const sections = ['about', 'prototypes', 'projects', 'contact'];
-  let currentSectionIndex = 0;
+    const sections = ['about', 'prototypes', 'projects', 'contact'];
+    let currentSectionIndex = 0;
 
   function scrollToSection(index) {
-    if (index >= 0 && index < sections.length) {
-      currentSectionIndex = index;
-      document.getElementById(sections[index]).scrollIntoView({behavior: 'smooth'});
-      // update nav active class
-      document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-      const activeLink = document.querySelector(`nav a[href="#${sections[index]}"]`);
-      if (activeLink) activeLink.classList.add('active');
-    }
+  if (index >= 0 && index < sections.length) {
+    currentSectionIndex = index;
+    const targetSection = document.getElementById(sections[index]);
+    window.scrollTo({
+      top: targetSection.offsetTop,
+      behavior: 'smooth'
+    });
+    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+    const activeLink = document.querySelector(`nav a[href="#${sections[index]}"]`);
+    if (activeLink) activeLink.classList.add('active');
   }
+}
 
-  // Smooth scroll fallback for nav links
- document.querySelectorAll('nav a').forEach(link => {
-  link.addEventListener('click', function(e) {
-    const href = this.getAttribute('href');
-    if (href && href.startsWith('#')) {
-      e.preventDefault();
-      const targetId = href.substring(1);
-      const targetSection = document.getElementById(targetId);
-      if (targetSection) {
-        targetSection.scrollIntoView({ behavior: 'smooth' });
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href && href.startsWith('#')) {
+          e.preventDefault();
+          const targetId = href.substring(1);
+          const targetSection = document.getElementById(targetId);
+          if (targetSection) {
+            targetSection.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      });
+    });
+
+    window.addEventListener('keydown', (e) => {
+      const key = e.key.toLowerCase();
+      if (['w', 'arrowup'].includes(key)) {
+        if (currentSectionIndex > 0) scrollToSection(currentSectionIndex - 1);
+      } else if (['s', 'arrowdown'].includes(key)) {
+        if (currentSectionIndex < sections.length - 1) scrollToSection(currentSectionIndex + 1);
+      } else if (['a', 'arrowleft'].includes(key)) {
+        if (currentSectionIndex > 0) scrollToSection(currentSectionIndex - 1);
+      } else if (['d', 'arrowright'].includes(key)) {
+        if (currentSectionIndex < sections.length - 1) scrollToSection(currentSectionIndex + 1);
       }
-    }
-    // If not an internal link, let the browser handle it normally
+    });
+
+    function animateSplitText(selector) {
+  const el = document.querySelector(selector);
+  if (!el) return;
+  const text = el.textContent.trim();
+  el.innerHTML = '';
+  text.split('').forEach((char, i) => {
+    const span = document.createElement('span');
+    span.textContent = char === ' ' ? '\u00A0' : char;
+    span.style.animationDelay = `${i * 0.02}s`;
+    el.appendChild(span);
   });
-});
+  el.classList.add('split-text');
+}
 
-  // Listen for keydown to navigate sections
-  window.addEventListener('keydown', (e) => {
-    const key = e.key.toLowerCase();
-    if (['w', 'arrowup'].includes(key)) {
-      // Scroll up (previous section)
-      if (currentSectionIndex > 0) scrollToSection(currentSectionIndex - 1);
-    } else if (['s', 'arrowdown'].includes(key)) {
-      // Scroll down (next section)
-      if (currentSectionIndex < sections.length -1) scrollToSection(currentSectionIndex + 1);
-    } else if (['a', 'arrowleft'].includes(key)) {
-      // Scroll to previous section
-      if (currentSectionIndex > 0) scrollToSection(currentSectionIndex - 1);
-    } else if (['d', 'arrowright'].includes(key)) {
-      // Scroll to next section
-      if (currentSectionIndex < sections.length -1) scrollToSection(currentSectionIndex + 1);
-    }
+  const canvas = document.getElementById('pixel-trail-canvas');
+  const ctx = canvas.getContext('2d');
+  const dots = [];
+  const DOT_SIZE = 6;
+  const TRAIL_LENGTH = 15;
+
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+
+  window.addEventListener('mousemove', e => {
+    dots.push({ x: e.clientX, y: e.clientY, alpha: 1 });
+    if (dots.length > TRAIL_LENGTH) dots.shift();
   });
 
-</script>
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    dots.forEach((dot, i) => {
+      dot.alpha -= 0.04;
+      const size = DOT_SIZE * ((TRAIL_LENGTH - i) / TRAIL_LENGTH);
+      ctx.fillStyle = `rgba(0,255,204,${dot.alpha})`;
+      ctx.fillRect(dot.x - size / 2, dot.y - size / 2, size, size);
+    });
+    requestAnimationFrame(animate);
+  }
+  animate();
 
-</body>
-</html>
+  </script>
