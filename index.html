@@ -189,15 +189,16 @@
 .card-image {
   width: 130px;
   height: 130px;
+  max-width: 100%;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid #00ffcc;
   box-shadow: 0 0 12px #00ffcc44;
   margin-bottom: 1rem;
   transition: transform 0.4s ease;
-    image-rendering: auto;
+  image-rendering: auto;
   -webkit-backface-visibility: hidden;
-  -webkit-transform: translateZ(0);
+  transform: translateZ(0); 
 }
 
 .profile-card:hover .card-image {
