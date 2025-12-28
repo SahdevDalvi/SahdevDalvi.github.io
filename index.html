@@ -290,6 +290,7 @@ body * {
     <a href="#projects">Projects</a>
     <a href="#contact">Contact</a>
     <a href="https://sahdevdalvi.github.io/Resume.png" target="_blank">Portfolio</a>
+    <a href="#research">Research</a>
   </nav>
 
   <div class="nav-instruction">Use WASD or Arrow keys to navigate</div>
@@ -358,6 +359,29 @@ body * {
 </div>
 
   </section>
+  <section id="research">
+  <h2>📄 Research Paper</h2>
+
+  <div class="project">
+    <h3>🧠 Lightweight IMU-Based Motion Interpretation for Real-Time Virtual Interaction</h3>
+    <p>
+      This research explores a simplified and efficient approach to real-time motion tracking using IMU sensors.
+      Instead of computationally heavy sensor fusion algorithms, the paper proposes a lightweight pipeline using
+      smoothing, thresholding, and motion-state classification—making it suitable for real-time XR and virtual
+      environment interactions.
+    </p>
+
+    <p style="color:#aaa; font-size:0.9rem;">
+      Focus Areas: IMU Tracking • XR Interaction • Real-Time Systems • Signal Processing
+    </p>
+
+    <a class="btn" 
+       href="https://github.com/SahdevDalvi/SahdevDalvi.github.io/blob/main/Research.pdf" 
+       target="_blank">
+       View Research Paper (PDF)
+    </a>
+  </div>
+</section>
   <section id="contact">
     <h2>📫 Contact Me</h2>
     <p>Email: dalvisahdev24@gmail.com</p>
@@ -383,7 +407,7 @@ body * {
     window.addEventListener('scroll', revealSections);
     window.addEventListener('load', revealSections);
 
-    const sections = ['about', 'prototypes', 'projects', 'contact'];
+    const sections = ['about', 'prototypes', 'projects', 'research', 'contact'];
     let currentSectionIndex = 0;
 
   function scrollToSection(index) {
